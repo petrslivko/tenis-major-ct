@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#123c32">
-  <title>První třebovský tenisový MAJOR čtyřher 21. 11. 2026</title>
+  <title>První třebovský tenisový MAJOR čtyřher</title>
   <style>
     :root {
       color-scheme: light;
@@ -255,7 +255,7 @@
           <div id="bracket-status" class="bracket-status">Čeká na dokončení skupin</div>
         </div>
         <div id="bracket" class="bracket-grid"></div>
-        <div class="rules"><strong>Pořadí ve skupině:</strong> body (výhra = 2, prohra = 0), vzájemný zápas při shodě dvou dvojic a poté rozdíl gamů; při shodě více dvojic se nejprve porovnají jejich vzájemné zápasy. Pokud zůstane shoda, rozhoduje počet vyhraných gamů. Výsledek play-off je počet gamů v jednom setu; při shodném skóre zůstává zápas nerozhodnutý.</div>
+        <div class="rules"><strong>Pořadí ve skupině:</strong> body (výhra = 2, remíza = 1, prohra = 0), vzájemné zápasy mezi dvojicemi se shodnými body, rozdíl gamů a poté počet vyhraných gamů. Výsledek play-off je počet gamů v jednom setu; při shodném skóre zůstává zápas nerozhodnutý.</div>
         <div class="footer"><span>Výsledky jsou sdílené a ukládají se online.</span><button id="reset" class="reset-button" type="button">Vynulovat turnaj</button></div>
       </div>
     </section>
@@ -433,20 +433,19 @@
           const result = state.scores[`${group}-${index}`];
           const first = scoreValue(result?.[0]);
           const second = scoreValue(result?.[1]);
-          return first !== null && second !== null && first !== second;
+          return first !== null && second !== null;
         });
       }
 
       function standings(group) {
         const rows = state.teams[group].map((name, index) => ({
-          id: `${group}${index + 1}`, name, played: 0, wins: 0, points: 0, gamesFor: 0, gamesAgainst: 0, headToHead: new Map()
+          id: `${group}${index + 1}`, name, played: 0, wins: 0, draws: 0, points: 0, gamesFor: 0, gamesAgainst: 0, headToHead: new Map()
         }));
-        const rowMap = new Map(rows.map(row => [row.id, row]));
         poolPairs.forEach(([first, second], matchIndex) => {
           const result = state.scores[`${group}-${matchIndex}`];
           const a = scoreValue(result?.[0]);
           const b = scoreValue(result?.[1]);
-          if (a === null || b === null || a === b) return;
+          if (a === null || b === null) return;
           const left = rows[first];
           const right = rows[second];
           left.played++;
@@ -455,23 +454,29 @@
           left.gamesAgainst += b;
           right.gamesFor += b;
           right.gamesAgainst += a;
-          const winner = a > b ? left : right;
-          winner.wins++;
-          winner.points += 2;
-          left.headToHead.set(right.id, a > b ? 1 : -1);
-          right.headToHead.set(left.id, b > a ? 1 : -1);
+          if (a === b) {
+            left.draws++;
+            right.draws++;
+            left.points++;
+            right.points++;
+          } else {
+            const winner = a > b ? left : right;
+            winner.wins++;
+            winner.points += 2;
+          }
+          left.headToHead.set(right.id, { points: a > b ? 2 : a === b ? 1 : 0, gameDifference: a - b });
+          right.headToHead.set(left.id, { points: b > a ? 2 : a === b ? 1 : 0, gameDifference: b - a });
         });
 
         rows.sort((a, b) => {
           if (b.points !== a.points) return b.points - a.points;
-          const tied = rows.filter(row => row.points === a.points && row !== a);
-          if (tied.length === 1 && tied[0].points === b.points) {
-            const directResult = a.headToHead.get(b.id);
-            if (directResult) return -directResult;
-          }
-          const headA = tied.reduce((total, opponent) => total + (a.headToHead.get(opponent.id) === 1 ? 2 : 0), 0);
-          const headB = tied.reduce((total, opponent) => total + (b.headToHead.get(opponent.id) === 1 ? 2 : 0), 0);
-          if (headA !== headB) return headB - headA;
+          const tied = rows.filter(row => row.points === a.points);
+          const headPointsA = tied.reduce((total, opponent) => total + (a.headToHead.get(opponent.id)?.points || 0), 0);
+          const headPointsB = tied.reduce((total, opponent) => total + (b.headToHead.get(opponent.id)?.points || 0), 0);
+          if (headPointsA !== headPointsB) return headPointsB - headPointsA;
+          const headDifferenceA = tied.reduce((total, opponent) => total + (a.headToHead.get(opponent.id)?.gameDifference || 0), 0);
+          const headDifferenceB = tied.reduce((total, opponent) => total + (b.headToHead.get(opponent.id)?.gameDifference || 0), 0);
+          if (headDifferenceA !== headDifferenceB) return headDifferenceB - headDifferenceA;
           const difference = (b.gamesFor - b.gamesAgainst) - (a.gamesFor - a.gamesAgainst);
           if (difference) return difference;
           if (b.gamesFor !== a.gamesFor) return b.gamesFor - a.gamesFor;
@@ -503,10 +508,10 @@
         return `<article class="standings-card">
           <div class="standings-head"><div class="group-letter">${group}</div><h3>Skupina ${group}</h3></div>
           <div class="table-scroll"><table>
-            <thead><tr><th>#</th><th>Dvojice</th><th>Z</th><th>V</th><th>+/-</th><th>Body</th></tr></thead>
+            <thead><tr><th>#</th><th>Dvojice</th><th>Z</th><th>V</th><th>R</th><th>+/-</th><th>Body</th></tr></thead>
             <tbody>${rows.map((row, index) => `<tr class="${index < 4 ? "qualified" : ""}">
               <td class="rank">${index + 1}</td><td class="team-name" title="${escaped(row.name)}">${escaped(row.name)}</td>
-              <td>${row.played}</td><td>${row.wins}</td><td>${row.gamesFor - row.gamesAgainst > 0 ? "+" : ""}${row.gamesFor - row.gamesAgainst}</td><td class="points">${row.points}</td>
+              <td>${row.played}</td><td>${row.wins}</td><td>${row.draws}</td><td>${row.gamesFor - row.gamesAgainst > 0 ? "+" : ""}${row.gamesFor - row.gamesAgainst}</td><td class="points">${row.points}</td>
             </tr>`).join("")}</tbody>
           </table></div>
           <p class="standings-note">${completedPool(group) ? "Skupina dokončena · pořadí je finální." : "Pořadí je průběžné; doplňte všech 6 výsledků."}</p>
@@ -664,12 +669,7 @@
           target.dispatchEvent(new Event("input", { bubbles: true }));
           return;
         }
-        if (target.matches(".score-input")) {
-          const result = state.scores[target.dataset.score];
-          if (result && scoreValue(result[0]) !== null && scoreValue(result[1]) !== null && scoreValue(result[0]) === scoreValue(result[1])) {
-            alert("Set nemůže skončit nerozhodně. Upravte skóre na vítězný výsledek.");
-          }
-        } else {
+        if (target.matches(".bracket-score")) {
           const result = state.playoff[target.dataset.playoff];
           if (result && scoreValue(result[0]) !== null && scoreValue(result[1]) !== null && scoreValue(result[0]) === scoreValue(result[1])) {
             alert("Zápas nemůže skončit nerozhodně. Upravte skóre na vítězný výsledek.");
