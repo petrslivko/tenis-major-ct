@@ -86,55 +86,59 @@
     .team-index { color: #91a097; font-size: 11px; font-weight: 800; text-align: center; }
     .team-field input { width: 100%; min-width: 0; border: 1px solid #e6ece5; border-radius: 8px; background: #fafbf9; padding: 8px 10px; outline: none; }
     .team-field input:focus, .score-input:focus { border-color: #83aa64; box-shadow: 0 0 0 3px rgba(131,170,100,.13); }
-    .subheading { padding: 11px 18px 8px; border-top: 1px solid #edf1ec; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .subheading { padding: 11px 18px 8px; border-top: 1px solid #edf1ec; color: var(--muted); font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .match-list { display: grid; gap: 8px; padding: 0 18px 18px; }
-    .match-row { display: grid; grid-template-columns: minmax(0, 1fr) 42px 10px 42px minmax(0, 1fr); align-items: center; gap: 6px; min-height: 39px; }
-    .match-team { overflow: hidden; color: #43534c; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+    .match-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) 50px 12px 50px minmax(0, 1fr); align-items: center; gap: 6px; min-height: 48px; }
+    .match-team { overflow: hidden; color: #43534c; font-size: 18px; text-overflow: ellipsis; white-space: nowrap; }
     .match-team:last-child { text-align: right; }
-    .score-input { width: 42px; height: 34px; border: 1px solid #e2e9e1; border-radius: 7px; background: #fafbf9; color: var(--ink); text-align: center; outline: none; }
+    .score-input { width: 50px; height: 42px; border: 1px solid #e2e9e1; border-radius: 7px; background: #fafbf9; color: var(--ink); font-size: 22.5px; text-align: center; outline: none; }
     .score-input::-webkit-inner-spin-button { opacity: 1; }
-    .score-separator { color: #a1aca4; text-align: center; font-size: 12px; }
+    .score-separator { color: #a1aca4; text-align: center; font-size: 18px; }
     .empty-score { color: #a1aca4; text-align: center; font-size: 11px; }
+    .court-control { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 15px; white-space: nowrap; }
+    .court-select { width: 42px; height: 38px; border: 1px solid #e2e9e1; border-radius: 7px; background: #fafbf9; color: var(--ink); font: inherit; font-size: 16.5px; }
 
     .standings-wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
     .standings-card { overflow: hidden; }
     .standings-head { display: flex; align-items: center; gap: 10px; padding: 15px 17px; border-bottom: 1px solid #edf1ec; }
-    .standings-head .group-letter { width: 31px; height: 31px; border-radius: 9px; font-size: 14px; }
-    .standings-head h3 { margin: 0; font-size: 15px; }
+    .standings-head .group-letter { width: 46px; height: 46px; border-radius: 14px; font-size: 21px; }
+    .standings-head h3 { margin: 0; font-size: 22.5px; }
     .table-scroll { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; text-align: left; }
-    th { padding: 10px 10px; color: #839087; font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
-    td { padding: 10px; border-top: 1px solid #f0f3ef; font-size: 12px; white-space: nowrap; }
+    th { padding: 10px 10px; color: #839087; font-size: 13.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    td { padding: 10px; border-top: 1px solid #f0f3ef; font-size: 18px; white-space: nowrap; }
     th:first-child, td:first-child { padding-left: 17px; }
     th:last-child, td:last-child { padding-right: 17px; }
     td.rank { color: #87958c; font-weight: 800; }
     td.team-name { max-width: 190px; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
     td.points { color: var(--green-2); font-weight: 850; }
     tr.qualified { background: #f5f9ec; }
-    .standings-note { margin: 11px 17px 15px; color: var(--muted); font-size: 11px; }
+    .standings-note { margin: 11px 17px 15px; color: var(--muted); font-size: 16.5px; }
     .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: var(--muted); font-size: 11px; }
     .legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #a6bb8a; vertical-align: 1px; }
 
     .bracket-panel { padding: 20px; }
     .bracket-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 17px; }
-    .bracket-top h3 { margin: 0; font-size: 17px; }
-    .bracket-top p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
-    .bracket-status { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; background: #f0f3ef; padding: 7px 10px; color: #6b7971; font-size: 11px; white-space: nowrap; }
+    .bracket-top h3 { margin: 0; font-size: 25.5px; }
+    .bracket-top p { margin: 4px 0 0; color: var(--muted); font-size: 18px; }
+    .bracket-status { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; background: #f0f3ef; padding: 7px 10px; color: #6b7971; font-size: 16.5px; white-space: nowrap; }
     .bracket-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #aeb8b0; }
     .bracket-status.ready { background: #eff7df; color: #46632f; }
     .bracket-status.ready::before { background: #78a740; }
     .bracket-grid { display: grid; grid-template-columns: minmax(160px, 1fr) 28px minmax(160px, 1fr) 28px minmax(160px, 1fr); align-items: stretch; gap: 10px; }
     .round { display: flex; flex-direction: column; min-width: 0; }
-    .round-title { margin: 0 0 11px; color: #829087; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .round-title { margin: 0 0 11px; color: #829087; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .round-matches { display: flex; flex: 1; flex-direction: column; justify-content: space-around; gap: 13px; }
     .bracket-match { overflow: hidden; border: 1px solid #e4ebe3; border-radius: 10px; background: #fff; }
-    .bracket-match-label { padding: 6px 9px; border-bottom: 1px solid #edf1ec; background: #fafbf9; color: #849188; font-size: 9px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
-    .bracket-team { display: grid; grid-template-columns: minmax(0, 1fr) 35px; align-items: center; gap: 5px; padding: 7px 8px 7px 9px; font-size: 11px; }
+    .bracket-match-label { display: flex; align-items: center; justify-content: space-between; gap: 5px; padding: 6px 9px; border-bottom: 1px solid #edf1ec; background: #fafbf9; color: #849188; font-size: 13.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+    .bracket-match-label .court-control { font-size: 13.5px; letter-spacing: normal; text-transform: none; }
+    .bracket-match-label .court-select { height: 32px; padding: 2px 4px; background: white; font-size: 13.5px; }
+    .bracket-team { display: grid; grid-template-columns: minmax(0, 1fr) 45px; align-items: center; gap: 5px; padding: 7px 8px 7px 9px; font-size: 16.5px; }
     .bracket-team + .bracket-team { border-top: 1px solid #f0f3ef; }
     .bracket-team-name { overflow: hidden; color: #536159; text-overflow: ellipsis; white-space: nowrap; }
     .bracket-team.winner .bracket-team-name { color: var(--green); font-weight: 800; }
     .bracket-team.loser .bracket-team-name { color: #a4ada6; }
-    .bracket-score { width: 35px; height: 29px; border: 1px solid #e2e9e1; border-radius: 6px; background: #fafbf9; text-align: center; outline: none; }
+    .bracket-score { width: 45px; height: 38px; border: 1px solid #e2e9e1; border-radius: 6px; background: #fafbf9; font-size: 22.5px; text-align: center; outline: none; }
     .bracket-score:focus { border-color: #83aa64; }
     .bracket-score:disabled { background: #f2f4f1; color: #a0aaa2; cursor: not-allowed; }
     .bracket-connector { display: grid; place-items: center; color: #b0bbb2; font-size: 20px; }
@@ -190,8 +194,11 @@
       .final-column { grid-column: auto; grid-template-columns: 1fr; gap: 9px; }
       .final-column .round-title { grid-column: auto; }
       .final-match, .third-place { align-self: stretch; }
+      .match-row { grid-template-columns: minmax(0, 1fr) 50px 12px 50px minmax(0, 1fr); min-height: 64px; row-gap: 4px; }
+      .match-row .court-control { grid-column: 1 / -1; }
+      .match-team { overflow-wrap: anywhere; text-overflow: clip; white-space: normal; }
       .bracket-top { align-items: flex-start; }
-      .bracket-status { font-size: 10px; }
+      .bracket-status { font-size: 15px; }
       .footer { align-items: flex-start; }
       .access-panel { align-items: flex-start; flex-direction: column; }
     }
@@ -273,18 +280,21 @@
           B: Array.from({ length: 4 }, (_, index) => `Dvojice B${index + 1}`)
         },
         scores: {},
+        courts: {},
         playoff: {}
       });
       function poolPairs(teamCount) {
         const pairs = [];
         const baseCount = Math.min(teamCount, 4);
         for (let first = 0; first < baseCount; first++) {
-          for (let second = first + 1; second < baseCount; second++) pairs.push([first, second]);
+          for (let second = first + 1; second < baseCount; second++) pairs.push([first, second, pairs.length]);
         }
         for (let extra = 4; extra < teamCount; extra++) {
-          for (let first = 0; first < extra; first++) pairs.push([first, extra]);
+          for (let first = 0; first < extra; first++) pairs.push([first, extra, pairs.length]);
         }
-        return pairs;
+        return teamCount === 4
+          ? [[1, 3, 4], [2, 0, 1, true], [3, 2, 5, true], pairs[0], pairs[2], pairs[3]]
+          : pairs;
       }
       const playoffMatches = [
         { id: "qf1", label: "Čtvrtfinále 1", teams: ["A1", "B4"] },
@@ -321,6 +331,7 @@
             B: teams("B")
           },
           scores: isRecord(value.scores) ? value.scores : {},
+          courts: isRecord(value.courts) ? value.courts : {},
           playoff: isRecord(value.playoff) ? value.playoff : {}
         };
       }
@@ -332,7 +343,7 @@
       }
 
       function applyPermissions() {
-        document.querySelectorAll("[data-team], [data-team-count], [data-score], [data-playoff]").forEach(input => {
+        document.querySelectorAll("[data-team], [data-team-count], [data-score], [data-court], [data-playoff]").forEach(input => {
           input.disabled = !isAdmin || (input.matches("[data-playoff]") && input.dataset.ready !== "true");
         });
         document.getElementById("reset").hidden = !isAdmin;
@@ -382,7 +393,7 @@
       }
 
       async function loadRemote(force = false) {
-        if (!client || (!force && (dirty || saving || document.activeElement?.matches("[data-team], [data-team-count], [data-score], [data-playoff]")))) return;
+        if (!client || (!force && (dirty || saving || document.activeElement?.matches("[data-team], [data-team-count], [data-score], [data-court], [data-playoff]")))) return;
         const { data, error } = await client
           .from("tournament_state")
           .select("data, updated_at")
@@ -439,6 +450,16 @@
         })[char]);
       }
 
+      function courtSelect(matchId, label) {
+        const court = ["1", "2", "3"].includes(state.courts[matchId]) ? state.courts[matchId] : "";
+        return `<div class="court-control"><span>Kurt</span><select class="court-select" aria-label="Kurt pro ${escaped(label)}" data-court="${escaped(matchId)}">
+          <option value="" ${court === "" ? "selected" : ""} hidden></option>
+          <option value="1" ${court === "1" ? "selected" : ""}>1</option>
+          <option value="2" ${court === "2" ? "selected" : ""}>2</option>
+          <option value="3" ${court === "3" ? "selected" : ""}>3</option>
+        </select></div>`;
+      }
+
       function teamName(teamId) {
         if (!teamId) return "Čeká na soupeře";
         const group = teamId[0];
@@ -447,8 +468,8 @@
       }
 
       function completedPool(group) {
-        return poolPairs(state.teams[group].length).every((_, index) => {
-          const result = state.scores[`${group}-${index}`];
+        return poolPairs(state.teams[group].length).every(([, , scoreIndex]) => {
+          const result = state.scores[`${group}-${scoreIndex}`];
           const first = scoreValue(result?.[0]);
           const second = scoreValue(result?.[1]);
           return first !== null && second !== null;
@@ -459,10 +480,12 @@
         const rows = state.teams[group].map((name, index) => ({
           id: `${group}${index + 1}`, name, played: 0, wins: 0, draws: 0, points: 0, gamesFor: 0, gamesAgainst: 0, headToHead: new Map()
         }));
-        poolPairs(state.teams[group].length).forEach(([first, second], matchIndex) => {
-          const result = state.scores[`${group}-${matchIndex}`];
-          const a = scoreValue(result?.[0]);
-          const b = scoreValue(result?.[1]);
+        poolPairs(state.teams[group].length).forEach(([first, second, scoreIndex, reverseScore]) => {
+          const result = state.scores[`${group}-${scoreIndex}`];
+          const storedFirst = scoreValue(result?.[0]);
+          const storedSecond = scoreValue(result?.[1]);
+          const a = reverseScore ? storedSecond : storedFirst;
+          const b = reverseScore ? storedFirst : storedSecond;
           if (a === null || b === null) return;
           const left = rows[first];
           const right = rows[second];
@@ -505,13 +528,17 @@
 
       function groupMarkup(group) {
         const pairs = poolPairs(state.teams[group].length);
-        const matches = pairs.map(([first, second], index) => {
-          const result = state.scores[`${group}-${index}`] || ["", ""];
+        const matches = pairs.map(([first, second, scoreIndex, reverseScore]) => {
+          const storedResult = state.scores[`${group}-${scoreIndex}`] || ["", ""];
+          const result = reverseScore ? [storedResult[1], storedResult[0]] : storedResult;
+          const firstSide = reverseScore ? 1 : 0;
+          const secondSide = reverseScore ? 0 : 1;
           return `<div class="match-row">
+            ${courtSelect(`${group}-${scoreIndex}`, `zápas ve skupině ${group}`)}
             <span class="match-team" data-team-ref="${group}-${first}" title="${escaped(state.teams[group][first])}">${escaped(state.teams[group][first])}</span>
-            <input class="score-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Skóre ${escaped(state.teams[group][first])} v zápase skupiny ${group}" data-score="${group}-${index}" data-side="0" value="${escaped(result[0] ?? "")}">
+            <input class="score-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Skóre ${escaped(state.teams[group][first])} v zápase skupiny ${group}" data-score="${group}-${scoreIndex}" data-side="${firstSide}" value="${escaped(result[0] ?? "")}">
             <span class="score-separator">:</span>
-            <input class="score-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Skóre ${escaped(state.teams[group][second])} v zápase skupiny ${group}" data-score="${group}-${index}" data-side="1" value="${escaped(result[1] ?? "")}">
+            <input class="score-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Skóre ${escaped(state.teams[group][second])} v zápase skupiny ${group}" data-score="${group}-${scoreIndex}" data-side="${secondSide}" value="${escaped(result[1] ?? "")}">
             <span class="match-team" data-team-ref="${group}-${second}" title="${escaped(state.teams[group][second])}">${escaped(state.teams[group][second])}</span>
           </div>`;
         }).join("");
@@ -583,7 +610,7 @@
         const decided = teams[0] && teams[1] && first !== null && second !== null && first !== second;
         const winnerIndex = decided ? (first > second ? 0 : 1) : -1;
         return `<div class="bracket-match ${options.third ? "third-place" : ""} ${options.final ? "final-match" : ""}">
-          <div class="bracket-match-label">${options.final ? '<span class="trophy">★</span>' : ""}${match.label}</div>
+          <div class="bracket-match-label"><span>${options.final ? '<span class="trophy">★</span>' : ""}${match.label}</span>${courtSelect(match.id, match.label)}</div>
           ${teams.map((team, index) => `<div class="bracket-team ${winnerIndex === index ? "winner" : winnerIndex !== -1 ? "loser" : ""}">
             <span class="bracket-team-name" title="${escaped(teamName(team))}">${escaped(teamName(team))}</span>
             <input class="bracket-score" type="number" min="0" step="1" inputmode="numeric" aria-label="Skóre ${escaped(teamName(team))} — ${match.label}" data-playoff="${match.id}" data-ready="${teams[0] && teams[1] ? "true" : "false"}" data-side="${index}" value="${escaped(score[index] ?? "")}" ${teams[0] && teams[1] && isAdmin ? "" : "disabled"}>
@@ -686,6 +713,12 @@
 
       document.addEventListener("change", event => {
         const target = event.target;
+        if (target.matches("[data-court]")) {
+          if (!isAdmin) return;
+          state.courts[target.dataset.court] = target.value;
+          scheduleSave();
+          return;
+        }
         if (target.matches("[data-team-count]")) {
           if (!isAdmin) return;
           const group = target.dataset.teamCount;
@@ -697,6 +730,9 @@
             current[index] || `Dvojice ${group}${index + 1}`);
           Object.keys(state.scores).forEach(matchId => {
             if (matchId.startsWith(`${group}-`)) delete state.scores[matchId];
+          });
+          Object.keys(state.courts).forEach(matchId => {
+            if (matchId.startsWith(`${group}-`)) delete state.courts[matchId];
           });
           state.playoff = {};
           scheduleSave();
@@ -721,7 +757,7 @@
 
       document.getElementById("reset").addEventListener("click", () => {
         if (!isAdmin) return;
-        if (!confirm("Opravdu chcete vynulovat názvy dvojic i všechny výsledky?")) return;
+        if (!confirm("Opravdu chcete vynulovat názvy dvojic, výsledky i přiřazení kurtů?")) return;
         state = defaultState();
         state.playoff = {};
         scheduleSave();
